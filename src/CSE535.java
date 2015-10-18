@@ -137,7 +137,6 @@ class InvertedIndex{
 		return invertedIndex2.get(term);
 	}
 	
-	//check list and send it that way
 	private LinkedList<node> intersection(postings posting1,postings posting2){
 		LinkedList<node> l1 = posting1.postingList;
 		LinkedList<node> l2 = posting2.postingList;
@@ -224,6 +223,26 @@ class InvertedIndex{
 		ArrayList<String> a=getArray(s);
 		return TAAThelper1(getPostings2(a.remove(0)).postingList,a);
 	}
+	
+	public LinkedList<node> TAATAndOptimized(String... s){
+		ArrayList<String> a=getArray(s);
+		ArrayList<String> aopt= new ArrayList<String>();
+		LinkedList<node> n= new LinkedList<node>();
+		for(int i=0;i<a.size();i++){
+			n.add(new node(a.get(i),getPostings2(a.get(i)).count));
+		}
+		Collections.sort(n, new Comparator<node>() {
+        	@Override
+            public int compare(final node object1, final node object2) {
+                return Integer.toString(object1.getfreq()).compareTo(Integer.toString(object2.getfreq()));
+        	}
+        });
+		for(int i=0;i<n.size();i++){
+			aopt.add(n.get(i).docId);
+		}
+		
+		return TAAThelper1(getPostings2(aopt.remove(0)).postingList,aopt);
+	} 
 	
 //	private Boolean checkfornull(LinkedList<node> helper){
 //		for(int i=0;i<helper.size();i++){
@@ -364,13 +383,14 @@ public class CSE535 {
 //		 posting1 = ii.getPostings2(term1);
 //		 posting2 = ii.getPostings2(term2);
 //		 l=ii.intersection(posting1, posting2);
-//		 l=ii.TAATAnd("everyone","in","as","i");
-		 l=ii.TAATOr("everyone","in","as");
+		 l=ii.TAATAndOptimized("everyone");
+//		 l=ii.TAATOr("everyone","in","as");
 		 for(int i=0;i<l.size();i++){
 			 System.out.println(l.get(i).docId);
 		 }
 		 System.out.println("----8645------");
-		 l=ii.DaatUnion("everyone","in","as");
+		 l=ii.TAATAnd("everyone");
+//		 l=ii.DaatUnion("everyone","in","as");
 		 for(int i=0;i<l.size();i++){
 			 System.out.println(l.get(i).docId);
 		 }
