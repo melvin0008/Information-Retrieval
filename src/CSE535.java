@@ -48,7 +48,7 @@ class InvertedIndex{
 		try {
 		    String line = null;
 		    int vstart,pstart,pend,count;
-			String postings,posting,temp,vocab;
+			String postings,temp,vocab;
 			String[] ary ;
 		    while ((line = br.readLine()) != null) {
 		    	ary=null;
@@ -101,7 +101,7 @@ class InvertedIndex{
 		
 	}
 	
-	String[] getTopKterms(int k){
+	public String[] getTopKterms(int k){
 			String[] topkterms = new String[k];
 			PriorityQueue<node> maxh = new PriorityQueue<node>(k, new Comparator<node>() {
 					@Override
@@ -129,16 +129,16 @@ class InvertedIndex{
 				return topkterms;	
 	}
 	
-	public postings getPostings1(String term){
+	private postings getPostings1(String term){
 		return invertedIndex1.get(term);
 	}
 	
-	public postings getPostings2(String term){
+	private postings getPostings2(String term){
 		return invertedIndex2.get(term);
 	}
 	
 	//check list and send it that way
-	public LinkedList<node> intersection(postings posting1,postings posting2){
+	private LinkedList<node> intersection(postings posting1,postings posting2){
 		LinkedList<node> l1 = posting1.postingList;
 		LinkedList<node> l2 = posting2.postingList;
 		LinkedList<node> l3 = new LinkedList<node>();
@@ -160,7 +160,7 @@ class InvertedIndex{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public LinkedList<node> union(postings posting1,postings posting2){
+	private LinkedList<node> union(postings posting1,postings posting2){
 		LinkedList<node> l1 = posting1.postingList;
 		LinkedList<node> l2 = posting2.postingList;
 		LinkedList<node> l3 = new LinkedList<node>();
@@ -189,7 +189,7 @@ class InvertedIndex{
 		return l3;
 	}
 	
-	public LinkedList<node> TAAThelper2(LinkedList<node> l,ArrayList<String> a){
+	private LinkedList<node> TAAThelper2(LinkedList<node> l,ArrayList<String> a){
 		int size=l.size();
 		if(a.size()<1){
 			return l;
@@ -211,7 +211,7 @@ class InvertedIndex{
 		return TAAThelper2(getPostings2(a.remove(0)).postingList,a);
 	}
 	
-	public LinkedList<node> TAAThelper1(LinkedList<node> l,ArrayList<String> a){
+	private LinkedList<node> TAAThelper1(LinkedList<node> l,ArrayList<String> a){
 		int size=l.size();
 		if(a.size()<1){
 			return l;
