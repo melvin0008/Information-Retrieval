@@ -22,8 +22,8 @@ class node{
 	        return false;
 	    }
 	    node that = (node) other;
-	    return this.docId.equals(that.docId)
-	        && this.freq==that.freq;
+	    return this.docId.equals(that.docId);
+	   
 	}
 }
 
@@ -383,17 +383,36 @@ public class CSE535 {
 //		 posting1 = ii.getPostings2(term1);
 //		 posting2 = ii.getPostings2(term2);
 //		 l=ii.intersection(posting1, posting2);
-		 l=ii.TAATAndOptimized("everyone");
+
+		 System.out.println("----DaatAnd------");
+		 l=ii.Daatintersection("Caribbean","April 18","Atlantic Coast","British");
+		 for(int i=0;i<l.size();i++){
+			 System.out.println(l.get(i).docId);
+		 }
+//		 System.out.println("----DaatOr------");
+//		 l=ii.DaatUnion("Atlantic", "Attack", "Atlanta");
+//		 for(int i=0;i<l.size();i++){
+//			 System.out.println(l.get(i).docId);
+//		 }
+		 
+		 System.out.println("----TaatAnd------");
+		 l=ii.TAATAnd("April 18","Atlantic Coast","British","Caribbean");
 //		 l=ii.TAATOr("everyone","in","as");
 		 for(int i=0;i<l.size();i++){
 			 System.out.println(l.get(i).docId);
 		 }
-		 System.out.println("----8645------");
-		 l=ii.TAATAnd("everyone");
+//		 System.out.println("----TaatOr------");
+//		 l=ii.TAATOr("Atlantic", "Attack", "Atlanta");
+//		 
+//		 for(int i=0;i<l.size();i++){
+//			 System.out.println(l.get(i).docId);
+//		 }
+//		 System.out.println("----8645------");
+//		 l=ii.TAATAnd("everyone");
 //		 l=ii.DaatUnion("everyone","in","as");
-		 for(int i=0;i<l.size();i++){
-			 System.out.println(l.get(i).docId);
-		 }
+//		 for(int i=0;i<l.size();i++){
+//			 System.out.println(l.get(i).docId);
+//		 }
 //		 ii.printInvertedIndexes();
 	}
 }
