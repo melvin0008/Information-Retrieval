@@ -1,0 +1,24 @@
+FUNCTION: getTopK 10
+Result: said, mln, dlr, from, it, vs, pct, ct, ha, year
+FUNCTION: termAtATimeQueryAnd heard,hand
+0 documents are found
+50 comparisons are made
+8.541E-4seconds are used
+50 comparisons are made with optimization
+Result: 
+FUNCTION: termAtATimeQueryOr heard,hand
+27 documents are found
+50 comparisons are made
+3.9828E-4seconds are used
+50 comparisons are made with optimization
+Result: 0009625, 0009773, 0009846, 0009861, 0009933, 0010088, 0010255, 0010272, 0010475, 0010580, 0010777, 0010778, 0010983, 0011002, 0011149, 0011154, 0011221, 0011299, 0011309, 0011442, 0011443, 0011807, 0012019, 0012140, 0012173, 0012554, 0012841
+FUNCTION: DocAtATimeQueryAnd heard,hand
+0 documents are found
+120 comparisons are made
+2.33963E-4seconds are used
+Result: 
+FUNCTION: DocAtATimeQueryOr heard,hand
+27 documents are found
+110 comparisons are made
+2.34145E-4seconds are used
+Result: 0009625, 0009773, 0009846, 0009861, 0009933, 0010088, 0010255, 0010272, 0010475, 0010580, 0010777, 0010778, 0010983, 0011002, 0011149, 0011154, 0011221, 0011299, 0011309, 0011442, 0011443, 0011807, 0012019, 0012140, 0012173, 0012554, 0012841
